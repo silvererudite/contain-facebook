@@ -23,6 +23,7 @@ const LOGIN_PATTERN_DETECTION_SELECTORS = [
   "[href*='/sign_in/Facebook']", // bazqux.com
   "[href*='signin/facebook']",
   "[href*='/auth/facebook']", // Producthunt
+  "[data-gfm-element-id='btn_sign_in_facebook']", // GoFundMe
   "[data-oauthserver*='facebook']", // Stackoverflow
   "[id*='facebook_connect_button']", // Quora
   "[data-action*='facebook-auth']", //Medium
@@ -53,6 +54,7 @@ const SHARE_PATTERN_DETECTION_SELECTORS = [
   "[data-bfa-network*='facebook']", // Buzzfeed Mini Share
   "[aria-label*='share on facebook']", // MSN
   "[data-tracking*='facebook|share']", // football.london
+  "[class*='js-share-to-facebook']", // GoFundMe
   "[class*='facebookShare']", // Producthunt share
   "[class*='social-tray__link--facebook']", // Vice
   ".post-action-options + .right > .social-icon.icon-f", // Imgur share
