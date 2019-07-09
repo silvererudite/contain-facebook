@@ -392,6 +392,16 @@ function calcZindex(target) {
   return zIndexLevel;
 }
 
+function checkIfOffsetIsNegative(offsetX, offset, htmlBadgeDiv){
+  const arrOffset = [offsetX, offset];
+  for (let offset of arrOffset) {
+    if (offset < 0) {
+      htmlBadgeDiv.classList.add("fbc-badge-disabled");
+      return false;
+    }
+  }
+  return;
+}
 
 function positionFacebookBadge (target, badgeClassUId, targetWidth, smallSwitch) {
 
@@ -436,10 +446,12 @@ function positionFacebookBadge (target, badgeClassUId, targetWidth, smallSwitch)
   const htmlBadgeDivPosX = (offsetPosX + targetWidth) - elementSizeOffsetX;
   const htmlBadgeDivPosY = offsetPosY - elementSizeOffsetY;
 
-  // TODO: Add Zindex Targeting
   const targetZindex = calcZindex(target);
 
-  // console.log( calcZindex(target) );
+  // If the offset is negative, it's most likely targeting a non-visible element.
+  if (checkIfOffsetIsNegative(htmlBadgeDivPosX, htmlBadgeDivPosY, htmlBadgeDiv)) {
+    return;
+  }
 
   // Set badge position based on target coordinates/size
   htmlBadgeDiv.style.zIndex = targetZindex;
